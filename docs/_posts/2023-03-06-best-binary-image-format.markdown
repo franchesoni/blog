@@ -5,11 +5,12 @@ date:   2023-03-06 14:06:55 +0000
 categories: software
 ---
 
+
 # .PNG is the lightest format for binary images
 
 Imagine you have a mask, this is, an image filled with `0`s and `1`s or `False` and `True`.
 Such a mask could look like
-![head-stencil](./images/nm2HM.png)
+![head-stencil](https://raw.githubusercontent.com/franchesoni/blog/main/docs/assets/images/nm2HM.png)
 
 **What's the lightest format to save this image into?**
 
@@ -21,11 +22,10 @@ Such a mask could look like
 ## Experiments
 We load images and save them using each of the formats above to see the final size. Full code is given at the end.
 
-
-![head-stencil]({{ site.url }}assets/images/nm2HM.png)
 ### Particular image
 We load and save the following binary image (488x275) using the different formats
-![head-stencil](./images/nm2HM.png)
+
+![head-stencil](https://raw.githubusercontent.com/franchesoni/blog/main/docs/assets/images/nm2HM.png)
 ```python
 imgname = "nm2HM.png"
 pilimg = Image.open(imgname)
