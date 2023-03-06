@@ -51,7 +51,7 @@ for size in [10, 100, 1000, 10000]:
     outpaths.append(outpath)
 ```
 
-### Results
+## Results
 
 Sizes in bytes, the lowest is bold-face.
  
@@ -67,3 +67,40 @@ Sizes in bytes, the lowest is bold-face.
 
 **`.png` is the best format to store black-and-white images!**
 We proved that empirically and it makes sense given the compression mechanisms and bit-depth support of `.png` vs. `.jpeg` or `.pbm`.
+
+---
+## Full code
+```python
+import os
+from PIL import Image
+import numpy as np
+
+imgname = "nm2HM.png"
+pilimg = Image.open(imgname)
+npimg = np.array(pilimg)
+
+print('first image...')
+outpaths = []
+formats = [".jpeg", ".png", ".pbm"]
+for format in formats:
+  outpath = "out1" + format
+  pilimg.save(outpath)
+  outpaths.append(outpath)
+
+print('random images...')
+# generate random images of different sizes
+np.random.seed(0)
+for size in [10, 100, 1000, 10000]:
+  random_img = Image.fromarray((np.random.rand(size, size)>0.5).astype(np.uint8)*255)
+  for format in formats:
+    outpath = f"out_size_{size}{format}"
+    random_img.save(outpath)
+    outpaths.append(outpath)
+ 
+print('stats...')
+for outpath in outpaths:
+  size = os.path.getsize(outpath)
+  print('-'*20)
+  print(outpath)
+  print(size)
+```
