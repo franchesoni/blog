@@ -9,7 +9,7 @@ categories: software
 
 Imagine you have a mask, this is, an image filled with `0`s and `1`s or `False` and `True`.
 Such a mask could look like
-![head-stencil](images/nm2HM.png)
+![head-stencil](./images/nm2HM.png)
 
 **What's the lightest format to save this image into?**
 
@@ -24,7 +24,7 @@ We load images and save them using each of the formats above to see the final si
 
 ### Particular image
 We load and save the following binary image (488x275) using the different formats
-![head-stencil](images/nm2HM.png)
+![head-stencil](./images/nm2HM.png)
 ```python
 imgname = "nm2HM.png"
 pilimg = Image.open(imgname)
