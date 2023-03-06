@@ -54,7 +54,7 @@ for size in [10, 100, 1000, 10000]:
 Sizes in bytes, the lowest is bold-face.
  
 | image | .JPEG | .PNG | .PBM |
----
+|---|---|---|---|
 | example | 14818 | **4191** | 402615 |
 | out_size_10 | 478 | **104** | 113 |
 | out_size_100.jpeg | 7643 | **2334** | 10015 |
