@@ -10,6 +10,7 @@ categories: software
 
 Imagine you have a mask, this is, an image filled with `0`s and `1`s or `False` and `True`.
 Such a mask could look like
+
 ![head-stencil](https://raw.githubusercontent.com/franchesoni/blog/main/docs/assets/images/nm2HM.png)
 
 **What's the lightest format to save this image into?**
@@ -61,3 +62,8 @@ Sizes in bytes, the lowest is bold-face.
 | out_size_100.jpeg | 7643 | **2334** | 10015 |
 | out_size_1000.jpeg | 681430 | **214614** | 1000017 |
 | out_size_10000.jpeg | 68087734 | **20329735** | 100000019 |
+
+# Conclusion
+
+**`.png` is the best format to store black-and-white images!**
+We proved that empirically and it makes sense given the compression mechanisms and bit-depth support of `.png` vs. `.jpeg` or `.pbm`.
