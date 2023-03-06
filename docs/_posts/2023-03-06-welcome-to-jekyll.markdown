@@ -22,6 +22,7 @@ Such a mask could look like
 We load images and save them using each of the formats above to see the final size. Full code is given at the end.
 
 
+![head-stencil]({{ site.url }}assets/images/nm2HM.png)
 ### Particular image
 We load and save the following binary image (488x275) using the different formats
 ![head-stencil](./images/nm2HM.png)
