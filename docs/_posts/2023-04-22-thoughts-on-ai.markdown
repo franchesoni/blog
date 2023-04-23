@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Thoughts on the AI race"
+date:   2023-04-22 20:06:55 +0000
+categories: software, ai, future
+---
+
+# Understanding the AI race
+It's time to think about AI. The recent developments have surprised me and surpassed my expectations, which is strange as I'm devoted to AI full time. I will here describe the overall situation and from that I will make a few guesses of where will everything go. 
+
+## Summary
+AI is making developers more productive and developers are using and building AI, making it advance many times faster. Current models are very powerful and research progress will make them more available and cheaper, but the main developments now are in the product space. Many products already work, which provides incentives to get even more AI development. Executives think that the AI transition is life or death (specially for those companies that are in the cloud computing business) and they're focusing on their AI branches (e.g. MSFT's OpenAI, Google's DeepMind).
+
+
+## Thoughts on topics
+### Big changes 
+A few things that have recently happened:
+- software developers are using AI, learning about AI and building AI
+- impressive performance has been achieved and impressive applications developed causing waves in business strategies
+- large language modeling was "solved" (it isn't about the next GPT anymore)
+
+These things are all relatively new. Let's explore them further:
+
+Developers are talking about AI more and more. On the one hand, because it provides an unfair advantage (at every level, from begginers to the creator of Python), on the other hand, because it enables developers to build new interesting products on top of APIs made available by AI companies such as OpenAI or cohere. I've seen developers in youtube talking about AI more and more: the developer community is being self-taught. I've seen developers mix AI products in very inventive ways. Knowing what the AI black-box does (but not necessarily how) is enough to use it as a building block to generate other applications that can as well be called AI because they solve problems that usually require intelligence. One silly example of this is segmentation from text, which was developed only two days after Segment-Anything had been released by combining it with CLIP. The fact that developers now use AI more and more is making them **more productive**, which is huge. Not only that, **their creations are feeding AI advancement** in a sort of virtuous cycle. This is huge mass of very productive people that are suddenly helping move the technology forward, providing feedback, lowering barriers of entry and increasing incentives.
+
+There are a plethora of tasks now being tackled by AI. Large language models that generate text are useful for many text related tasks, notably code generation and information retrieval. Then we have text based image and video generation and manipulation that content creators are using more and more. Great speech models and strong image understanding. The performance in most tasks is very good and we reached a point in which the models are actually useful and not just research. Software and hardware improvements go hand-in-hand with these advances. The wave of developers getting into AI and the usefulness of AI products is making executives reconsider their business models.
+
+Companies such as Microsoft, Google and Amazon are realizing that the AI market is going to be huge and that they adapt or die. They started investing more into AI (e.g. MSFT and OpenAI), restructuring teams (Google Brain merge with DeepMind), and competing intensily (Amazon code assistant is free while MSFT's Copilot isn't). This means that huge flows of capital will go into AI development. This is only looking at the US. In China AI is moving very fast too, if not faster. They're actually building AI doctors and all sort of other things. They've got the advantage of not valuing privacy too much, which gives them data to create more impactful solutions. To some extent countries and companies are realizing that going all in into AI is the best they can do. AI provides unfair advantages and solves unlocks many other problems. It's like a master key and they feel close to building it.
+
+### Hype?
+AI hype isn't new, it happens since computers were born. However, in the last years it has been different. The hype was enormous. So much that many of us inside AI thought it could be counterproductive: setting bars to high is a perfect recipe for failure. However, AI has lived up to expectations so far, many times surpassing them. The most surprising for AI people shouldn't be the performance of the models but the acceleration the field has and the impact of the products that are being built.
+
+There is one more reason to think that the AI hype isn't too big: if AI really is a technology that induces virtuous cycles and is accelerating then we should expect greater developments in the future. This has been true in the last decade. It's going faster than what most people expect.
+
+### Recap of developments
+This AI era started with the use of deep learning or artificial neural networks that could exploit the scaling of data and computing power. This solution solved many old problems and new ones and it's in the basis of today's AIs. Researchers started using deep learning and improving architectures and creating new solutions (e.g. neural radiance fields or deep generative models). Self-supervised learning, i.e. extracting targets from the data itself instead of from human annotations, was shown to work and that enabled models to use even more data. Deep self-supervised learning and scale were enough to build great products such as GPT-4.
+
+### AI isn't that great
+So far I've been positive, but let's lower the hype. AI is quite dumb. It can't do most of the things even silly animals do. This is the point of the head of AI at Meta and most old researchers. Scale and self-supervised learning had reached a limit (as said by OpenAI CEO) and now the improvements might be harder to get. Products will be built, but we still need to significantly advance the technology in order to fulfill many of the promises of AI, the most important one being robotics. Robotics is far from being solved as has been shown by the failed quest to build self-driving cars. People thought it should have been way easier. 
+
+We have seen a lot of hyped concepts in the last decade. The most important one being crypto. Remember the crypto fever and the web3 concept? They're dead. People built a lot around it and it's kind of useless (compared to the attention it received). People are really eager to get the next cool thing and they love to think something is life-chaning. But the underlying technology of blockchain hasn't improved that much and the technical and cost limitations made the tech not that useful. I also see such a hype in Mark's decision to develop the metaverse. Maybe he was high, very into the topic and covid was a favorable context, but he made a big move that, for most people, wasn't correct.
+
+Many basic AI problems, such as teaching a machine to recognize a new object from a few examples, are far from being solved. Most advances have been related to text but text has fundamental limitations. It is very useful as a weak learning signal though. But most researchers aren't very optimistic. I don't know if it's because they can't possibly catch up with the field but they don't think anything too trascendental will happen and solve the fundamental problems they've been working on for decades (although some are being solved! e.g. image segmentation). Self-driving cars and voice assistants have largely failed so far, will we solve those problems soon? Automated machine learning was also going to be a thing and I'm still waiting.
+
+### Open source and intellectual property
+As I said, devleopers are getting in and not only that, but the open source community consisting of developers and researchers (is there a difference nowadays?) is catching up with industrial advances very fast. This means that the models are being democratized very quickly and the costly thing is running them (from that follows the importance of AI for cloud computing). I think democratization is a good thing. However, questions of privacy and intellectual property are still relevant. Large language models for code or text are trained on publicly available code or text that was created by someone that probably wants some credit. There has been arguments about how open source would be killed if the AI didn't provide proper credit to creators. MSFT's Bing has solved this elegantly by listing sources along the answer. Big companies know their approach to this conflict: make the tech so useful that you can't ban it. In some sense they're right, laws are made custom to some society and if the value of ignoring IP is very high then IP will be ignored. International comptetition also plays a big role: if the US were to ban code assistants on the basis of IP violations then China would certainly not do that same and most likely win the AI race (and consequently all other races).
+
+
+### On AI safety
+Given the advances in AI there is more and more the discussion of how safe it is. The positions on this topic lie in a spectrum from "safety concerns are stupid" to "we should halt all development to avoid the exctinction of humanity". More moderate opinions would say that we're far away from an AI that has some actual understanding of the world and as such it isn't dangerous at all (at least yet) and that we're living the increased acceleration of AI progress and that AI will be super powerful very soon (and because it's powerful it has a bigger impact and we need to be specially careful of what kind of impact it is). 
+
+### Disruption
+If we are indeed living the introduction of a very disruptive technology that can provide great abudance to societies then we should rethink our societal organization. Hopefully those countries that can switch to an abundance paradigm will triumph. Adding taxes on robots is something people think about implementing in the US. The idea is to preserve the job market and redistribute wealth. Overtaxing robots is reducing incentives on technological development, which has historically been the recepy for economic failure. I'm looking forward to disruption in most human activities. Specially in medicine and content generation (that includes education)!
+
+
+### One idea
+OpenAI released a paper some time ago that received surprisingly little attention. The paper is called "evolution through large models" and it shows how we can solve any problem for which we have a fast and informative scoring method of potential solutions by asking a large language model to change the code a little many times and keeping the useful modifications. This tool or any similar idea that involves a machine generating its own data and improving with it will be very impactful. As long as we keep relying on human feedback (written or whatever) we won't be able to solve the truly difficult problems we face simply because we humans couldn't solve them. That's where the most value is.
+
+### Peer review and AI advancement
+The amount of work being done on AI is insane. AI conferences are being flooded by papers and the peer review system is clearly suboptimal. Nowadays the best way to find nice AI work is to go to "trending research" in `paperswithcode.com` and look at the projects with most github stars per hour. This is more democratic than peer review and is giving pretty good results. However, github stars depend a lot on the visibility of a project and that's were social media starts playing a role. Research always involved some marketing but now it's more important than ever. There is an information inefficiency that is ironically high for IT research. I wish Galactica hasn't been killed.
+
+
+## Final thoughts and predictions
+AI is trendy and there are good reasons for that. It will most likely continue being trendy (if not getting more). The impact in society will be big but will come smoothly, similar to the internet (but faster, as shown in adoption curves). It will most likely help create new tech and have a high impact in the world, although the inertia of societies is big and usually underestimated. It might be just an extension of software development or it might help solve really difficult problems (of the sort DeepMind is trying to tackle). The two next big challenges are i) creativity outside interpolation and human guidance and ii) animal intelligence. It might feel exciting nowadays, but the impact will always be subject to human adaptation, which is slower than technological progress. Keep an eye on the field and continue doing you.
+
