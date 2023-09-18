@@ -1,0 +1,5 @@
+It's very hard to find an interesting topic to write about. Humans have written about many things from many different viewpoints and even though the unexplored space is much bigger it's very hard to see for almost no light had been shed on it. It takes a lot of knowledge and vision to take a step in an unexplored direction. Even the most disruptive works are usually inspired by forgotten ideas (e.g. Picasso's cubism and african tribal masks).
+
+Virginia Woolf wrote in "A Room of One's Own" that before women wrote, literature lacked a realistic view of a woman. A woman was described by the men and the men didn't seem to notice that the women could have a life of their own outside of their presence, hidden from men's eyes and unrelated to them.
+
+But to get to the disruption of women writing many years were needed and there are people that could argue that we're not there yet, that there is still space unoccupied by women. And gender is only one of the topics that have fascinated humanity. Class struggles, economics, love, politics, religion, and philosophy, which can be seen as the contemplation of all these questions. 

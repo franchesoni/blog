@@ -1,0 +1,297 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\author{}
+\date{}
+
+\begin{document}
+
+\hypertarget{contrastive-learning-for-vision-a-little-survey}{%
+\section{Contrastive learning for vision: a little
+survey}\label{contrastive-learning-for-vision-a-little-survey}}
+
+It happened to me that I want to design a filter trained by contrastive
+learning methods. But I do not know what is the best way. This is my
+fast review to find this out (3 am).
+
+\hypertarget{titles}{%
+\subsection{Titles}\label{titles}}
+
+We start by listing some interesting titles
+
+\begin{itemize}
+\tightlist
+\item
+  A Simple Framework for Contrastive Learning of Visual Representations
+\item
+  MoCo, BYOL (I want more recent)
+\item
+  Unsupervised Learning of Visual Features by Contrasting Cluster
+  Assignments: SwAV, instead of running pairwise comparisons they use
+  data augmentation and cluster assingment. To do this they use the
+  \emph{representation} extracted from one view to predict the
+  \emph{cluster assigned} to another view of the image.
+\item
+  Supervised Contrastive Learning: they use the labels used to compute
+  the cross-entropy loss in the traditional supervised setting to do
+  contrastive learning, i.e.~pushing representations of the same class
+  together.
+\item
+  Exploring Simple Siamese Representation Learning (Kaiming He)
+\item
+  Divide and Contrast: Self-supervised Learning from Uncurated Data
+\item
+  Mean Shift for Self-Supervised Learning: a generalization of BYOL that
+  shifts representations of views towards the mean of the nearest
+  neighbors' representations.
+\item
+  Momentum\^{}2 Teacher: Momentum Teacher with Momentum Statistics for
+  Self-Supervised Learning. It seems vaguely similar to BYOL but the
+  idea is not seducing enough. I want basic but powerful contrastive!
+\item
+  With a Little Help from My Friends: Nearest-Neighbor Contrastive
+  Learning of Visual Representations
+\item
+  Train a One-Million-Way Instance Classifier for Unsupervised Visual
+  Representation Learning. The title is expressive, they try to solve
+  the problems that arise when doing this naively. This could be useful.
+\item
+  Efficient Visual Pretraining with Contrastive Detection. I think I
+  have read this paper from DeepMind. It is interesting, although I
+  forgot the contrastive method.
+\item
+  A Low Rank Promoting Prior for Unsupervised Contrastive Learning. They
+  do not only look for clusters but also for clusters that live in
+  low-dimensional spaces. This is supposed to increase performance. At
+  the cost of some complexity, of course.
+\item
+  DetCo: Unsupervised Contrastive Learning for Object Detection
+\item
+  An Empirical Study of Training Self-Supervised Vision Transformers.
+  Ok, this is the paper I want to read.
+\item
+  Propagate Yourself: Exploring Pixel-Level Consistency for Unsupervised
+  Visual Representation Learning. This one is in my to-read list, oups.
+\item
+  Divide and Contrast: Self-supervised Learning from Uncurated Data.
+  They alternate between contrastive learning and clustering-based hard
+  negative mining. I don't like alternating, it is not simple enough.
+\item
+  Unsupervised Pretraining for Object Detection by Patch
+  Reidentification
+\item
+  Understanding self-supervised Learning Dynamics without Contrastive
+  Pairs
+\item
+  Self-supervised Learning from a Multi-view Perspective. Theoretical
+  work, sounds interesting.
+\item
+  Barlow Twins: Self-Supervised Learning via Redundancy Reduction. It is
+  an improvement over traditional contrastive learning that suffers from
+  sometimes having views that are very similar.
+\end{itemize}
+
+Now I'm satisfied with my literature review and luckily Kaiming He wrote
+the paper \emph{An Empirical Study of Training Self-Supervised Vision
+Transformers}. I think this paper will be enough to continue my little
+review and get an idea of which methods I should use. (03:38)
+
+\hypertarget{an-empirical-study-of-training-self-supervised-vision-transformers}{%
+\subsection{\texorpdfstring{\emph{An Empirical Study of Training
+Self-Supervised Vision
+Transformers}}{An Empirical Study of Training Self-Supervised Vision Transformers}}\label{an-empirical-study-of-training-self-supervised-vision-transformers}}
+
+I feel like the abstract is not really what I wanted, as they talk about
+``benchmark ViT results in MoCo v3 and several other self-supervised
+frameworks''. I hope they are not \emph{that} centered in MoCo, I want a
+wide overview. However, I trust the authors' criteria (which doesn't
+always happen). I'll give a summary.
+
+\hypertarget{intro}{%
+\subsubsection{Intro}\label{intro}}
+
+\hypertarget{part-1}{%
+\paragraph{Part 1}\label{part-1}}
+
+They try self-supervised methodologies based in siamese networks for use
+with Vision Transformers (ViT). They do that because ViT work better.
+They use MoCo, \emph{A simple framework for contrastive learning of
+visual representations}, \emph{Unsupervised learning of visual features
+by contrasting cluster assignments} and BYOL.
+
+\hypertarget{part-2}{%
+\paragraph{Part 2}\label{part-2}}
+
+Convnets have been already studied. For ViT, there is mild degradation
+related to training instability. To solve this they ``freeze the patch
+projection layer in ViT to a fixed random patch projection''.
+
+\hypertarget{part-3}{%
+\paragraph{Part 3}\label{part-3}}
+
+Their big ViT works well and is competitive against big ResNets. This
+was before the Masked Autoencoder paper. But they were already
+suggesting that aggresive SSL on ViT could be great.
+
+\hypertarget{related-work}{%
+\subsubsection{Related work}\label{related-work}}
+
+The interesting part.
+
+\hypertarget{contrastive-learning}{%
+\paragraph{Contrastive learning}\label{contrastive-learning}}
+
+Contrastive learning is to attract positive samples and dispel negative
+samples. The need of negative samples has been questioned, which is
+important is to match positives.
+
+\hypertarget{moco-v3}{%
+\paragraph{MoCo v3}\label{moco-v3}}
+
+Two crops under random data augmentation. These views are encoded to
+vectors \(q, k\) by encoders \(f_q, f_k\). They use the InfoNCE loss:
+\[\mathcal{L}_q = -\log{\frac{\exp{(q\cdot k^+ / \tau)}}{\exp{(q \cdot k^+ / \tau)}+\sum_{k^-}{\exp{(q \cdot k^- / \tau)}}}}\]
+
+where \(k^+\) and \(k^-\) are encodings of the same and a different
+image than \(q\), respectively. However, they simplify the loss function
+to:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{loss }\OperatorTok{=}\NormalTok{ ctr(q1, k2) }\OperatorTok{+}\NormalTok{ ctr(q2, k1)}
+
+\KeywordTok{def}\NormalTok{ ctr(q, k):}
+\NormalTok{    logits }\OperatorTok{=}\NormalTok{ mm(q, k.t())  }\CommentTok{\# [N, N] pairs}
+\NormalTok{    labels }\OperatorTok{=} \BuiltInTok{range}\NormalTok{(N)}
+\NormalTok{    loss }\OperatorTok{=}\NormalTok{ CrossEntropyLoss(logits}\OperatorTok{/}\NormalTok{tau, labels)}
+    \ControlFlowTok{return} \DecValTok{2} \OperatorTok{*}\NormalTok{ tau }\OperatorTok{*}\NormalTok{ loss}
+\end{Highlighting}
+\end{Shaded}
+
+where \texttt{q1\ q2\ k1\ k2} are the encodings of images \texttt{1} and
+\texttt{2} through \(f_q\) and \(f_k\). Note that \(f_k\) is a backbone
+with a projection MLP on top, while \(f_q\) is a backbone, a projection
+MLP and a prediction MLP. \(f_k\) is updated by the moving average of
+\(f_q\) (excluding the prediction head).
+
+\hypertarget{training-and-instability}{%
+\paragraph{Training and instability}\label{training-and-instability}}
+
+They show a few curves that indeed show some abrupt falls and a
+performance loss, depending on the batch size. Large batch sizes create
+a ``training restart'' effect.
+
+Then, use 4k batch size, AdamW optimizer, and \emph{freeze the weights
+of the patch projection}. This is something I don't want to do for my
+application, but let's keep reading.
+
+It's basically that, some hyperparameters, and the non-negligible fact
+that they trained on 512 TPUs. This is, if I do it in 1 TPU it would
+take more than a year :)
+
+\hypertarget{ssl-frameworks}{%
+\paragraph{SSL frameworks}\label{ssl-frameworks}}
+
+MoCo, SimCLR, BYOL, SwAV. MoCo is the best for transformers (according
+to this paper). Moreover, removing the prediction MLP does not hurt
+accuracy by a lot, which is good because it's simpler.
+
+\hypertarget{my-conclusion}{%
+\subsection{My conclusion}\label{my-conclusion}}
+
+If thinking about doing contrastive learning with ViT, probably the
+method below is simple and should provide a good baseline.
+
+Procedure (for each image): - take two views of the same image - pass
+both of them through both networks \(f_q\), \(f_k\) (we get
+\(q_1, q_2, k_1, k_2\)). The networks should consist on a backbone + an
+MLP projection head. They must be identical. - compute the loss as
+described in a section above - update the weights of \(f_q\) (or
+\(f_k\), it is symmetrical), and write a moving average of \(f_q\)
+weights into \(f_k\) weights - train :)
+
+I have to see still how to do the update. Tomorrow starts the
+implementation. (04:46)
+
+\end{document}

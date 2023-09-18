@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Evolution through Large Models &lpar;ELM&rpar;</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension ms-toolsai.jupyter */
+/* These classnames are inherited from bootstrap, but are present in most notebook renderers */
+
+.alert {
+    width: auto;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.alert > *:last-child {
+    margin-bottom: 0;
+}
+#preview > .alert:last-child {
+    /* Prevent this being set to zero by the default notebook stylesheet */
+    padding-bottom: 1em;
+}
+
+.alert-success {
+    /* Note there is no suitable color available, so we just copy "info" */
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-info {
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-warning {
+    background-color: var(--theme-warning-background);
+    color: var(--theme-warning-foreground);
+}
+.alert-danger {
+    background-color: var(--theme-error-background);
+    color: var(--theme-error-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        <style>
+          body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+              font-size: 14px;
+              line-height: 4;
+              max-width: 700px;
+          }
+</style>
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="evolution-through-large-models-elm">Evolution through Large Models (ELM)</h1>
+<h2 id="is-this-interesting">Is this interesting?</h2>
+<p>I'll call it ELM. I have been very excited by ELM since it first got out and it has had surprisingly low academic traction: only two citations in six months.</p>
+<p>However, there were a lot of retweets and some fancy companies (OpenAI, CarperAI) are working on this, which gives me hope. At the same time, I have spoken with some knowledgeable friends and with my supervisors about this and they didn't seem that excited.</p>
+<p>The lack of excitement is probably because the method doesn't work yet. My excitement comes from:</p>
+<ul>
+<li>it's receiving less attention than it deserves</li>
+<li>most tasks or problems can be written as code</li>
+<li>it can be used to improve the methods it uses, thereby generating a self-improving cycle</li>
+</ul>
+<p>It would be a game-changer optimization method if it worked. In fact, it's the only thing that would seem exceptional to me AI-wise.</p>
+<h2 id="elm-summary">ELM summary</h2>
+<p>The ELM paper in a nutshell uses a LLM as the mutation operator in evolutionary programming. This is new and powerful. Furthermore, it shows that finetuning the LLM on the good and bad mutations can improve the algorithm (phase 1). They also show that once these mutations are generated smaller and problem-specific LLMs can be finetuned or trained from scratch and that they work relatively well (phase 2). Lastly, they show that they can train the LLM to be conditioned on the task by using Reinforcement Learning (RL), using one problem specific metric as reward (phase 3).</p>
+<p>I have a few comments of things I don't yet quite understand:</p>
+<ol>
+<li>what's the difference between the finetuning in phase 1 and the finetuning in phase 2?</li>
+<li>why is conditioning so important for open-endedness?</li>
+<li>isn't the seed code enough of a condition? Is there a way to avoid going back to &quot;easy&quot; solutions and continue innovating? (e.g. forbidding large changes) isn't diversity enough to this end?</li>
+<li>is RL powerful enough? why do we need RL to train the conditional model? (instead of just doing something very similar to phase 1 or 2 finetuning, which I admit don't know exactly how it works).</li>
+</ol>
+<p>A few quotes from the paper regarding open-endedness (more on that later):</p>
+<blockquote>
+<p>We hypothesize that when unleashed in more complex domains, this capability of conditional invention will contribute to the open-endedness of the induced process by continually introducing new objects to the environment, and thus changing its properties for other agents.</p>
+</blockquote>
+<p>and also,</p>
+<blockquote>
+<p>From the perspective of open-endedness, the challenge in principle is that the search is by definition continually and even intentionally shifting out of distribution.</p>
+</blockquote>
+<p>Let me go through my thinking: large models are becoming bigger and better and they will provide better mutations of code, this will make the algorithm work on some easy problems and if we can generate many easy problems then we'll be able to generate good mutation data. Training on this data will make the algorithm work on harder problems and so on. In the end, we'll have an optimization method that will find the best code for any problem that has a &quot;this code is better than the previous one&quot; signal.</p>
+<h2 id="why-it-could-fail-to-work">Why it could fail to work</h2>
+<h3 id="llms-wont-be-good-enough">LLMs won't be good enough</h3>
+<p>There are many things I might be missing. First, the search space in code is huge and there is no guarantee that a Large Language Model (LLM) will be able to efficiently explore it. In fact, even though LLMs are very good, I don't know how creative they are in always generating a meaningful different mutation. Moreover, their creativity is upper bounded by human creativity because they are trained on human code while lacking the science, collaboration, reasoning, etc. that humans exploit to be creative.
+The only escape for that is to generate quality of mutation data automatically, escaping the trap of human data, analogous to what AlphaZero did over AlphaGo (using self-play instead of recorded games).</p>
+<h3 id="we-wont-be-able-to-generate-good-mutation-data">We won't be able to generate good mutation data</h3>
+<p>If we rely on human generated data then the product will not grow to be arbitrarily good. As they proposed, one could use the good and bad mutations to finetune the LLM, but how many examples will we need? Probably many, but do we have that many meaningful problems? Assume we can generate arbitrary problems and get good and bad mutations by solving them. How do we know this is useful to tackle the actually important problems? The subset of important problems might be too small.</p>
+<p>Just as a side note, in the paper they want to develop an algorithm to tackle a specific kind of problems, while I would love to see a big LLM that used in this framework solves any problem from the context given in the seed code.</p>
+<h3 id="we-lack-conditioning">We lack conditioning</h3>
+<p>Maybe generating a general purpose algorithm will be very inefficient. Exactly the same algorithm will be run for all the problems but every problem is different. Nowadays the algorithm has absolutely no knowledge of the characteristics of the problem other than those given in the last generated code. The code could include, however, a description of the problem, but will this be enough? The authors propose to use RL, but they use RL in an environment with a continuous reward, which is not the most general (although if we had to restrict the method to those problems it'll be still very useful). The most general is the binary improved or not signal.</p>
+<h2 id="how-i-see-it-could-work">How I see it could work</h2>
+<h3 id="the-idea">The idea</h3>
+<p>Imagine you have:</p>
+<ul>
+<li>a problem for which you can compare two pieces of code and know if the second is better than the first.</li>
+<li>some starting code optionally including a description of the problem.</li>
+<li>a LLM that can modify code in a sensible way.</li>
+</ul>
+<p>For instance, you have the code for the Adam optimizer and a way to train a few toy networks to compare the convergence speed of two optimizers. Then you can ask the LLM to modify the code of the Adam optimizer and you can compare the old and the new optimizer. If the modified optimizer is better then you can keep it, otherwise you can discard it. Now imagine you do this very very quickly (in fact, it's paralellizable). Then what you get is a sequence of better and better optimizers and a way to explore the space of optimizers and after a while you have a pretty good optimizer, hopefully better than adam. Of course, then you can use this optimizer to faster or better train your LLM.</p>
+<p>This is the idea of ELM and it has a lot of potential because:</p>
+<ul>
+<li>most tasks or problems can be written as code</li>
+<li>it can be used to improve the methods it uses by generating a self-improving cycle</li>
+</ul>
+<p>However, it's been shown to work only on toy problems. The reason is that the search space of code is huge. If LLMs efficiently explored the space one would have solved many problems, including mathematics (see next).</p>
+<h3 id="comparison-to-ai-for-math">Comparison to AI for math</h3>
+<p>AI for math usually tries to automatically generate proofs for theorems. The problem is very similar in the sense of having a search space that is huge, only some of the results are interesting or important to humans, and it requires quite a lot of creativity. There is a key difference which is that math is binary, i.e. a proof is either correct or incorrect. This means that it's impossible to measure if we are getting closer to a solution (is it?). In code, however, this is possible and the search is greatly facilitated.</p>
+<p>A side note, an idea arised: for math, we could measure how close we are getting to a solution if the theorem was automatically generated. Maybe this signal can be useful to learn a generator that better learns how to take the intermediate steps to a proof.</p>
+<h3 id="open-endedness">Open-endedness</h3>
+<p>The researchers that published this paper work in the field of open-ended learning, and they argue that the state-of-the-art is weak open-endedness, which means that novel, out-of-distribution solutions are created for a while but the innovation process eventually plateaus. Strong open-endedness, in contrast, involves continuous evolution forever. Such ever-improving process is seen in nature, e.g. evolution of species (it it? what's the improvement metric?), thus it's realizable.</p>
+<h3 id="creativity">Creativity</h3>
+<p>One could argue that creativity is just interpolation (I remember seeing an art book about that). Just today Copilot proposed an idea that I regarded as creative: &quot;use LLMs to change the data used to train foundation models for vision&quot;. I found it as original as useless (language models don't generate vision data). Many times people have regarded LLMs as &quot;creative&quot;. The main problem is that to solve unsolved problems we might need more than interpolation, and I'm not sure LLMs will be able to explore the code space well enough to create the out-of-distribution data needed to solve open problems. I'll say, though, that it's not that hard for LLMs to be more creative than humans.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I wanted to write how I'd approach this problem, but I realized I have little idea. However, I think that it would be good to understand what are the interesting problems to be tackled with this tool, how to measure how hard they are and how to generate seeds.</p>
+<p>As a practical approachable challenge I would invite you to think about problems that have an improvement signal (this can be a continuous reward or a binary value saying if you're better than before) that can be quickly evaluated and that are meaningful. The optimizer example is one of my best ideas, but it's not quickly evaluated. Another example could be list sorting, but it's not meaningful (I think it's already been solved practically and theoretically). I'm sure that there are problems that should be interesting and allow for quick evaluation, finding them is the first step.</p>
+<p>After understanding the problems we can compile a list of them and maybe even generate new ones automatically. Then we can use the ELM framework to solve them, generate data of good mutations, and improve the ELM framework and expand to harder and harder problems.</p>
+<p><strong>Hope you enjoyed it! Tell me what you think at <a href="mailto:marchesoniacland@gmail.com">marchesoniacland@gmail.com</a></strong></p>
+
+        
+        
+    </body>
+    </html>

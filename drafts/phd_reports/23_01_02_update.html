@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PhD Report 2 Jan 2023</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension ms-toolsai.jupyter */
+/* These classnames are inherited from bootstrap, but are present in most notebook renderers */
+
+.alert {
+    width: auto;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.alert > *:last-child {
+    margin-bottom: 0;
+}
+#preview > .alert:last-child {
+    /* Prevent this being set to zero by the default notebook stylesheet */
+    padding-bottom: 1em;
+}
+
+.alert-success {
+    /* Note there is no suitable color available, so we just copy "info" */
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-info {
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-warning {
+    background-color: var(--theme-warning-background);
+    color: var(--theme-warning-foreground);
+}
+.alert-danger {
+    background-color: var(--theme-error-background);
+    color: var(--theme-error-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        <style>
+          body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+              font-size: 14px;
+              line-height: 4;
+              max-width: 700px;
+          }
+</style>
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="phd-report-2-jan-2023">PhD Report 2 Jan 2023</h1>
+<p>Happy new year, dear reader. I have a few updates on the state of AI research.</p>
+<p>Summary:</p>
+<ul>
+<li>an opinionated paper on reproducibility</li>
+<li>new dataset for object detection</li>
+<li>evolution through large models strikes again</li>
+<li>there's code for the forward-forward algorithm</li>
+<li>deepmind keeps getting into everything</li>
+<li>foundation models for vision</li>
+<li>Lula gave his first speech in his third presidency</li>
+<li>new entries on our read list</li>
+</ul>
+<h2 id="reproducibility">Reproducibility</h2>
+<p>An opinion paper got quite some traction, it is called &quot;Building a Culture of Reproducibility in Academic Research&quot;. The author is the leader of a research group and generated a culture of reproducibility inside his lab. The main points of the paper are:</p>
+<ul>
+<li>a leader of research can motivate reproducibility by appealing to the student's self-interest:
+<ul>
+<li>revisit results</li>
+<li>extend previous work</li>
+<li>get more visibility
+which are independent of the traditional incentives that come from ethical reasons.
+&quot;Future you will thank you!&quot; he says.</li>
+</ul>
+</li>
+<li>A few tips on doing this correctly:
+<ul>
+<li>frictionless reproducibility: pip install + copy command + paste command = expected output</li>
+<li>hopefully have it tested by another person (it can be used as onboarding)</li>
+<li>use good practices (github issues, pull requests)</li>
+<li>“reproduction log” at the bottom of the page, which contains a record of individuals who have successfully reproduced the results and the commit id of the code version used</li>
+<li>special emphasis on work you'll like to extend or could serve as baseline for comparison</li>
+<li>if you worry about code quality it'll never get done, better to do frictionless spaguetti code</li>
+<li>if possible &quot;eat your own dog food&quot; (use your own code)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Conclusion:</strong>
+Reproducibility can be incentivized by appealing to the student's self-interest. It is a good idea to have frictionless reproducibility. However, things that aren't going to be extended or used as baseline for comparison don't necessarily require reproducibility.</p>
+<h2 id="theres-a-new-multi-domain-dataset-for-object-detection">There's a new multi-domain dataset for object detection</h2>
+<p>Roboflow 100: A Rich, Multi-Domain Object Detection Benchmark. Apparently it mixes many different domains and it's very useful for our purposes. Ultimately we would like to make human-in-the-loop fine-tuning work on everyone of these domains. There was a similar big dataset released by Vitorio Ferrari in the past. I haven't tried it yet, but I'll post an update when I do.</p>
+<h2 id="evolution-through-large-models-strikes-again">Evolution through large models strikes again</h2>
+<p>Do you remember OpenAI's paper &quot;Evolution Through Large Models&quot;? It was released in June or July and was cited only twice (which is not a lot of cites for an OpenAI's paper). The main point of the paper is that one can do evolutionary programming (modifying, testing and keeping the best code) and use a Large Language Model (LLM) to mutate the code. This is specially interesting because it is an optimization method to find the best code to solve a problem and with the dataset of useful / useless mutations one can fine-tune the LLM to mutate better an better, therefore scaping the trap of human generated data.</p>
+<p>Well, one startup called CarperAI (which is a spun-off from EleutherAI, a collaborative research organization) has open-sourced the code for that paper, which is exciting. I'll write about my ideas on this topic in another entry.</p>
+<h2 id="code-for-the-forward-forward-algorithm">Code for the forward-forward algorithm</h2>
+<p>It is not the only repo but it's one implementing the new forward-forward algorithm to train neural networks (<a href="https://github.com/mohammadpz/pytorch_forward_forward">here</a>).</p>
+<p>This is a exciting new way to train neural networks. Although the code is for the simplest case, it is interesting. This way of training neural network doesn't seem to have any particular advantage over traditional backpropagation except for being able to handle a continuous stream of information and being biologically plausible. I might be missing factos though.</p>
+<h2 id="deepmind-keeps-getting-into-everything">Deepmind keeps getting into everything</h2>
+<p>Related to the Evolution Through Large Models (ELM) is the question of what problems are ammeanable for this optimization method on its earliest stages. What are the important problems of science? Well, Deepmind keeps on tackling them, find here the list of problems they have already worked on:</p>
+<p>Weather forecasting, AI for health, Protein folding, Mathematics, Computer Science, Nuclear fusion, Chip design, History, and probably more. In the ELM report I'll discuss the need for problems.</p>
+<h2 id="foundation-models-for-vision">Foundation models for vision</h2>
+<p>Between the trending papers (I use PapersWithCode trending home which is based on GitHub stars) there are many coming from companies I didn't know about that work on &quot;Foundation models&quot;. Foundation models are very big models that are trained on a lot of data and are meant to be used as a starting point for other tasks. In NLP they are called Large Language Models. The promise is that their sheer size makes them capable of tackling more diverse tasks more effectively that custom, smaller models that don't leverage many data.</p>
+<p>The thing that is new to me is that there are companies working on foundation models for computer vision. I have seen papers on this topic both in video and images. The top performing papers in the usual benchmarks of image classification and object detection started to be this kind of models with over 1 billion parameters. I'll write more about this in another entry.</p>
+<h2 id="lula-gave-his-first-speech-of-his-third-presidency">Lula gave his first speech of his third presidency</h2>
+<p>I'm sorry to divert to such mundane topics but I just wanted to say that the current president of Brazil, Lula, expressed that Brazil has a lot of potential and that it can and should develop industries in many fields, between them semiconductors. I'm skeptic about their capabilities in this realm but it's nice that big countries are starting to think strategically about the importance of information technologies (e.g. semis or AI). Maybe in the future governments will put more money on AI? I hope so, it'll be good for me.</p>
+<h2 id="cool-things-to-read">Cool things to read</h2>
+<p>(this list is for myself)</p>
+<ul>
+<li><strong>book:</strong> The Missing README: A Guide for the New Software Engineer. No Starch Press</li>
+<li><strong>paper:</strong> Efficient Few-Shot Learning Without Prompts</li>
+<li><strong>paper:</strong> Generalized Decoding for Pixel, Image, and Language &lt;- <em>to explore possible segmentations by selecting points in the embedding space</em></li>
+</ul>
+<p>By the way, Lex Fridman (host of the best podcast around) published a list of books he'll be reading. Find it here:</p>
+<ul>
+<li>1984, George Orwell</li>
+<li>Hitchhiker's Guide to the Galaxy, Douglas Adams</li>
+<li>Brave New World, Aldous Huxley</li>
+<li>The stranger, Albert Camus</li>
+<li>Meditations, Marcus Aurelius</li>
+<li>On the road, Jack Kerouac</li>
+<li>Foundation, Isaac Asimov</li>
+<li>The art of war, Sun Tzu</li>
+<li>Old man and the sea, Ernest Hemingway</li>
+<li>2001 a space odyssey, Arthur C. Clarke</li>
+<li>Animal farm, George Orwell</li>
+<li>Man's search for meaning, Viktor Frankl</li>
+<li>Sapiens, Yuval Noah Harari</li>
+<li>Metamorphosis, Franz Kafka</li>
+<li>The plague, Albert Camus</li>
+<li>Player of games, Iain M. Banks</li>
+<li>Fight club, Chuck Palahniuk</li>
+<li>The little prince, Antoine de Saint-Exupéry</li>
+<li>Brothers Karamazov, Fyodor Dostoyevsky</li>
+<li>Siddhartha, Hermann Hesse</li>
+<li>Dune, Frank Herbert</li>
+<li>Frankenstein, Mary Shelley</li>
+</ul>
+<p>I find the list interesting because it's completely unoriginal, most of these are classics or very famous books. I have read only some of them, and in fact I'm reading the Hitchhiker's Guide to the Galaxy right now, because better late than never.</p>
+<p>If I had a comments section I'd ask what do you think, but as I don't, just write me an email with any feedback which I'll integrate in a feedback report.</p>
+<p><strong>Hope you enjoyed it! Tell me what you think at <a href="mailto:marchesoniacland@gmail.com">marchesoniacland@gmail.com</a></strong></p>
+
+        
+        
+    </body>
+    </html>

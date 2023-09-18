@@ -1,0 +1,23 @@
+
+I'm reading set theory and the continuum hypothesis, which is a book JMM recommended. It reads: 'the object of mathematics is to discover "true" theorems.'. Instinctively, I stood up and said, "No! the object(ive) of mathematics is to help develop tools that are useful in the real world". 
+
+But, in fact, mathematics are not needed for the tool creation process. There are many tools whose mathematical formalization arrived later or simply never arrived. Tools can be built and they can be useful without any mathematics.
+
+Now, how is math related to "useful" tools? It is related to tools because math allows for a different understanding of a tool's features, capabilities and limitations. In other words, mathematics is a language that enables us to _think_ about the tools, just like other languages do. 
+
+Mathematics, being much more restrictive than natural language, can be used to navigate a world of ideas. Restricting how we navigate this world of ideas can help us to avoid getting lost.  
+
+Now, one question that arises is: "why is math true?". In fact, many scientists have the intuition that math statements are the closest we can get to truth, which is correct. That math lead us to truth is intuitive but not obvious, though. I haven't seen why this happens just until today.
+
+I have been told that Decartes has posed challenges to the truth of mathematics by introducing an evil genius that could fool us. We don't need to go that far. Between mathematicians, there are disagreements regarding what axioms to use, which naturally lead to different things being asserted. Moreover, the truthfulness of facts, for people that are not educated in mathematics, is sometimes different to what a mathematician could conclude. A good example of this are fallacies, the incorrect use of Aristotelian logic, or whatever discourse seems true but is not really founded on what some expert would consider "reasonable" axioms. 
+
+I did not know why mathematics felt true to me, maybe it was just education. I have been told how a contrareciprocal worked and then I just integrated this knowledge. However, once, a philosophy student gave me the answer: there is nothing divine or true in mathematics, but mathematics feels right because it is built upon an "inter-truth" that most of us humans apparently share. We all share, across all societies, some intuitive concepts that come from, for example, counting. Another way to see this is: mathematics taps into the common ability of people to understand and agree on a few "logical" principles.
+
+And one could then say, ok, then mathematics is not actually true, but it is just a social construct, maybe the strongest, shared by virtually everyone. And one would be right. But then ask yourself, what is truth?
+
+One final remark is about how to think about mathematics. It is a language founded on axioms that we can all understand and usually deem reasonable. This language enables us to navigate the world of ideas in a way that can shed light into new important insights. But what is this language? I don't yet know, but the introduction to logic of the book I am reading seems to suggest that math is just a sequence of symbols along some rules that define well-formed formulas. A sequence of symbols we know how to manipulate. And we know very precisely, to the level we could code this rules in a computer. Mathematics foundations should be programmable, and computers (which are a tool), an imaginary tool before an actual one, are very much related to mathematics. 
+
+I wish I will discover more about consistency, decibility, and computability. Let's keep reading! 
+
+
+
